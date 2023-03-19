@@ -41,4 +41,4 @@ $ yarn test:cov
 
 ## Deployed
 
-* REST API link: 
+* This project is hosted in aws: https://api.giangc.site/api
