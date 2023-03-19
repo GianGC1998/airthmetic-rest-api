@@ -12,6 +12,8 @@ export type CreateRecordResponseDto = {
   message: string;
 };
 
+export type DeleteRecordResponseDto = Record;
+
 export const CreateRecordMessage = {
   [RecordStatus.ACCEPTED]: 'The operation was successfull',
   [RecordStatus.REJECTED]:

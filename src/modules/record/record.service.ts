@@ -14,6 +14,7 @@ import {
   CreateRecordBody,
   CreateRecordMessage,
   CreateRecordResponseDto,
+  DeleteRecordResponseDto,
   getResponseFromOperation,
 } from './misc';
 import { RecordRepository } from './record.repository';
@@ -143,6 +144,43 @@ export class RecordService {
         'create',
         error,
         'An error occurred while performing the operation. Please, contact to support',
+      );
+    } finally {
+      await queryRunner.release();
+    }
+  }
+
+  async delete(recordId: number): Promise<DeleteRecordResponseDto> {
+    const queryRunner = await TransactionHelper.startTransaction(
+      this.connection,
+    );
+    const recordRepository = queryRunner.manager.getRepository(Record);
+
+    try {
+      const prevRecord = await recordRepository.findOne({
+        where: { id: recordId },
+      });
+
+      if (!prevRecord) {
+        throwError('The record does not exists');
+      }
+      if (!prevRecord.active) {
+        throwError('The record was deleted previously');
+      }
+
+      await recordRepository.update({ id: prevRecord.id }, { active: false });
+
+      await queryRunner.commitTransaction();
+
+      return prevRecord;
+    } catch (error) {
+      await queryRunner.rollbackTransaction();
+
+      throwException(
+        __filename,
+        'delete',
+        error,
+        'An error occurred while deleting the record. Please, contact to support',
       );
     } finally {
       await queryRunner.release();

@@ -14,7 +14,7 @@ export class RecordRepository extends Repository<Record> {
     take: number,
     query: FindAllQueryDto,
   ): Promise<[Record[], number]> {
-    const { filter, isActive, sorting } = query;
+    const { filter, sorting } = query;
 
     const qb = this.createQueryBuilder('record')
       .innerJoinAndSelect('record.user', 'user')
@@ -28,11 +28,8 @@ export class RecordRepository extends Repository<Record> {
             .orWhere(`record.status LIKE "%${filter}%"`);
         }),
       )
-      .andWhere('user.id = :id', { id: user.id });
-
-    if (isActive != null) {
-      qb.andWhere('user.active = :isActive', { isActive });
-    }
+      .andWhere('user.id = :id', { id: user.id })
+      .andWhere('record.active = :active', { active: true });
 
     return qb
       .skip(skip)

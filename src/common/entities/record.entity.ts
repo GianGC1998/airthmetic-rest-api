@@ -7,6 +7,9 @@ export class Record {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ default: true })
+  active: boolean;
+
   @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
   amount: number;
 

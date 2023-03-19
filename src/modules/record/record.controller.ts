@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { LoggedUser } from '../../common/decorators';
 import { FindAllQueryDto } from '../../common/dto';
@@ -24,5 +32,10 @@ export class RecordController {
   @Post()
   create(@LoggedUser() user: User, @Body() record: CreateRecordBody) {
     return this.recordService.create(user, record);
+  }
+
+  @Delete(':id')
+  deleteRecord(@Param('id') recordId: number) {
+    return this.recordService.delete(recordId);
   }
 }
