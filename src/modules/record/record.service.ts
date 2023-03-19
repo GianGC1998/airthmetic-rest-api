@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { RecordStatus } from 'src/common/entities/enums';
+import { RecordStatus } from '../../common/entities/enums';
 import { DataSource } from 'typeorm';
 import { FindAllQueryDto } from '../../common/dto';
 import { Operation, Record, User } from '../../common/entities';
@@ -27,7 +27,6 @@ export class RecordService {
 
   async findAll(userSession: User, body: FindAllQueryDto) {
     try {
-      console.log(body);
       const pagination = PaginationHelper.getSkipAndTake(
         body.page,
         body.pageSize,

@@ -1,7 +1,7 @@
 import { throwError } from '../../../common/helpers';
 import { Operation, Record } from '../../../common/entities';
 import { OperationType, RecordStatus } from '../../../common/entities/enums';
-import { RandomHelper } from 'src/common/helpers/random.helper';
+import { RandomHelper } from '../../../common/helpers/random.helper';
 
 export type CreateRecordBody = Record & {
   operationType: OperationType;

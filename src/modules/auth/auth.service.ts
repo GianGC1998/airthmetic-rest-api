@@ -8,7 +8,7 @@ import {
   throwException,
 } from '../../common/helpers';
 
-import { EnvConfig } from 'src/config/env.config';
+import { EnvConfig } from '../../config/env.config';
 import { UserService } from '../user/user.service';
 import { LoginBody } from './misc';
 import { JwtPayload } from './misc/types';
