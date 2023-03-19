@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "70e81c13-b0a7-424a-b393-980a35779e9e",
+		"name": "TrueNorth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Record",
+			"item": [
+				{
+					"name": "Make operation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0IiwiYWN0aXZlIjp0cnVlLCJzdGFydEJhbGFuY2UiOiIxMDAwLjAwIiwiY3VycmVudEJhbGFuY2UiOiIxMDAwLjAwIiwiaWF0IjoxNjc5MDY4MDc1LCJleHAiOjE2Nzk2NzI4NzV9.3-iqS-Dg41-AyVDz0D8yFduPzr9CgEHJgLAPra6t1LY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"operation\":{\n        \"id\":6\n    },\n    \"variableLeft\":null,\n    \"variableRight\":null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/records",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"records"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Records",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login User",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
