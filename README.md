@@ -24,6 +24,9 @@ $ yarn start:dev
 
 # production mode
 $ yarn start:prod
+
+# seed data
+$ yarn db:seed
 ```
 
 ## Test
@@ -32,11 +35,6 @@ $ yarn start:prod
 # unit tests
 $ yarn test
 
-# e2e tests
-$ yarn test:e2e
-
-# test coverage
-$ yarn test:cov
 ```
 
 ## Deployed
