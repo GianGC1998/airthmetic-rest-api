@@ -31,7 +31,7 @@ export async function getResponseFromOperation(
     case OperationType.ADDITION:
       return (variableLeft + variableRight).toFixed(4);
     case OperationType.SUBSTRACTION:
-      return (variableLeft - variableRight).toString(4);
+      return (variableLeft - variableRight).toFixed(4);
     case OperationType.MULTIPLICATION:
       return (variableLeft * variableRight).toFixed(4);
     case OperationType.DIVISION: {
